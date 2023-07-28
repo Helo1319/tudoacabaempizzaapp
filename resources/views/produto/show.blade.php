@@ -5,7 +5,7 @@
     margin-top: 62px;
   }
 </style>
-<nav class="navbar bg-dark fixed-top" data-bs-theme="dark">
+<nav class="navbar bg-danger fixed-top" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand">Produto: {{ $produto->nome }}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -20,10 +20,10 @@
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
             <a class="nav-link" href="/produtos">Produtos</a>
-          </li> 
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/cargos">Cargos</a>
-          </li> 
+          </li>
             </ul>
           </li>
         </ul>
