@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @section('content')
-<nav class="navbar bg-danger fixed-top" data-bs-theme="dark">
+<nav class="navbar bg-danger fixed-top" data-bs-theme="success">
   <div class="container-fluid">
     <a class="navbar-brand">Editar Produto: {{ $produto->nome }}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
     <label class="mt-3 form-label" for="observacoes">Observações</label>
     <input class="form-control" type="text" name="observacoes" id="observacoes" value="{{ $produto->observacoes }}">
 
-    <input class="btn btn-success mt-2" type="submit" value="Atualizar">
+    <input class="btn btn-outline-success mt-2" type="submit" value="Atualizar">
 </form>
 
 @endsection

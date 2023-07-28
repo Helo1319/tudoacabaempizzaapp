@@ -5,7 +5,7 @@
     margin-top: 60px;
   }
 </style>
-<nav class="navbar bg-danger fixed-top" data-bs-theme="dark">
+<nav class="navbar bg-danger fixed-top" data-bs-theme="success">
   <div class="container-fluid">
     <a class="navbar-brand">Cadastrar Produto</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -55,7 +55,7 @@
     <label class="mt-3 form-label" for="observacoes">Observações</label>
     <input class="form-control" type="text" name="observacoes" id="observacoes" value="">
 
-    <input class="btn btn-success mt-3" type="submit" value="Criar">
+    <input class="btn btn-outline-success mt-3" type="submit" value="Criar">
 </form>
 
 @endsection

@@ -5,7 +5,7 @@
     margin-top: 62px;
   }
 </style>
-<nav class="navbar bg-danger fixed-top" data-bs-theme="dark">
+<nav class="navbar bg-danger fixed-top" data-bs-theme="success">
   <div class="container-fluid">
     <a class="navbar-brand">Editar tamanho: {{ $produto->nome }}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -90,9 +90,9 @@
     </div>
 
     @if ($produtoTamanho)
-        <input class="btn btn-success mt-3" type="submit" value="Atualizar tamanho do produto">
+        <input class="btn btn-outline-success mt-3" type="submit" value="Atualizar tamanho do produto">
     @else
-        <input class="btn btn-success mt-3" type="submit" value="Atualizar tamanho do produto">
+        <input class="btn btn-outline-success mt-3" type="submit" value="Atualizar tamanho do produto">
     @endif
 
 </form>

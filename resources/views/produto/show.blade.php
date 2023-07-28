@@ -5,7 +5,7 @@
     margin-top: 62px;
   }
 </style>
-<nav class="navbar bg-danger fixed-top" data-bs-theme="dark">
+<nav class="navbar bg-danger fixed-top" data-bs-theme="success">
   <div class="container-fluid">
     <a class="navbar-brand">Produto: {{ $produto->nome }}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
     </p>
 @endif
     <h6>
-        <a class="btn btn-success" href="{{ route('produto.createTamanho', ['id_produto'=>$produto->id_produto ]) }}">
+        <a class="btn btn-outline-success" href="{{ route('produto.createTamanho', ['id_produto'=>$produto->id_produto ]) }}">
             Adicionar novo tamanho
         </a>
     </h6>
@@ -59,7 +59,7 @@
          <tr>
             <td>
                 {{-- editar --}}
-                <a class="btn btn-primary" href="{{ route('produto.edit', ['id'=>$produto->id_produto]) }}">
+                <a class="btn btn-outline-primary" href="{{ route('produto.edit', ['id'=>$produto->id_produto]) }}">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
             </td>

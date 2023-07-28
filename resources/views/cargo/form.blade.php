@@ -5,7 +5,7 @@
     margin-top: 60px;
   }
 </style>
-<nav class="navbar bg-danger fixed-top" data-bs-theme="dark">
+<nav class="navbar bg-danger fixed-top" data-bs-theme="success">
   <div class="container-fluid">
     <a class="navbar-brand">Editar Cargo: {{ $cargo->cargo }}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -42,7 +42,7 @@
         $cargo && $cargo->cargo != '' ?
         $cargo->cargo : old(cargo)
        }}" ><br>
-       <input class="btn btn-success" type="submit" value="Atualizar">
+       <input class="btn btn-outline-success" type="submit" value="Atualizar">
 </form>
 
 @endsection

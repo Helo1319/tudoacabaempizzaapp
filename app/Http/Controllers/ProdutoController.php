@@ -80,12 +80,19 @@ class ProdutoController extends Controller
             ->with('success', 'Atualizado com sucesso!');
     }
 
-    public function destroy(int $id)
-    {
-        Produto::find($id)->delete();
+     public function destroy(int $id) {
+
+        $produto = Produto::find($id);
+        if ($produto) {
+            $produto->delete();
         return redirect()
-            ->back()
-            ->with('danger', 'Removido com sucesso!');
+                ->back()
+                ->with('success', 'Removido com sucesso!');
+        } else {
+            return redirect()
+                ->back()
+                ->with('danger', 'Produto não encontrado!');
+        }
     }
 
     /*
