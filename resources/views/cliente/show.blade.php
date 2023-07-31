@@ -1,19 +1,19 @@
 @extends('layouts.base')
 @section('content')
 <style>
-  #table {
-    margin-top: 62px;
-  }
+    #table{
+        margin-top: 62px;
+    }
 </style>
 <nav class="navbar bg-danger fixed-top" data-bs-theme="success">
   <div class="container-fluid">
-    <a class="navbar-brand">Produto: {{ $produtos->nome }}</a>
+    <a class="navbar-brand">Cargo: {{ $cargo->cargo }}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-        <h2 class="offcanvas-title" id="offcanvasNavbarLabel">Produto: {{ $produtos->nome }}</h2>
+        <h2 class="offcanvas-title" id="offcanvasNavbarLabel">Cargo: {{ $cargo->cargo }}</h2>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -32,51 +32,33 @@
     </div>
   </div>
 </nav>
-<h2 id="table"> Tipo: {{ $produtos->tipo->tipo }} </h2>
-<p> Descrição: {!! nl2br($produtos->descricao) !!}</p>
-@if ($produtos->descricao)
-    <p class="alert alert-info">
-        {!! nl2br($produtos->descricao) !!}
-    </p>
-@endif
-    <h6>
-        <a class="btn btn-outline-success" href="{{ route('produto.createTamanho', ['id_produto'=>$produtos->id_produto ]) }}">
-            Adicionar novo tamanho
-        </a>
-    </h6>
+<h2 id="table"> Relação de Usuários com esse cargo</h2>
 <table class="table table-striped table-hover">
-
     <thead>
         <tr>
             <th class="col-2">Ações</th>
-            <th>Tamanho</th>
-            <th>Preço</th>
-            <th>Obs.:</th>
+            <th>Nome</th>
         </tr>
     </thead>
     <tbody>
-        @forelse ($produto->tamanhos()->get() as $item)
+        @forelse ($cargo->usuarios()->get() as $usuario)
          <tr>
             <td>
-                {{-- editar --}}
-                <a class="btn btn-outline-primary" href="{{ route('produto.edit', ['id'=>$produtos->id_produto]) }}">
+                <a class="btn btn-outline-primary" href="#">
                     <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+                <a class="btn btn-outline-success" href="#">
+                    <i class="fa-solid fa-eye"></i>
                 </a>
             </td>
             <td>
-                {!! $item->tamanho->tamanho !!}
-            </td>
-            <td>
-                {{ $item->preco }}
-            </td>
-            <td>
-                {!! nl2br($item->descricao) !!}
+                {{ $usuario->nome}}
             </td>
         </tr>
         @empty
         <tr>
-            <td colspan="4">
-                Nenhum tamanho definido para esse produto
+            <td colspan="2">
+                Nenhum usuário com esse cargo
             </td>
         </tr>
         @endforelse

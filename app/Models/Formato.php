@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TipoPagamento extends Model
+class Tamanho extends Model
 {
     use SoftDeletes;
-    protected $table = 'tipos_pagamentos';
-    protected $primaryKey = 'id_tipo_pagamento';
+
+    protected $table = 'formatos';
+    protected $primaryKey = 'id_formato';
     protected $dates = [
                 'created_at',
                 'updated_at',
                 'deleted_at'
     ];
-    protected $fillable = [
-        'tipos_pagamentos'
-    ];
 
+    protected $fillable = [
+        'formato'
+    ];
 }

@@ -24,7 +24,7 @@ class Produto extends Model
     ];
 
     protected $fillable = [
-        'id_tipo_produto',
+        'id_tip_prod',
         'nome',
         'descricao',
         'foto',
@@ -39,8 +39,8 @@ class Produto extends Model
 
         public function tipo(): object {
             return $this->hasOne( TipoProduto::class,
-                                    'id_tipo_produto',
-                                    'id_tipo_produto');
+                                    'id_tip_prod',
+                                    'id_tip_prod');
         }
 
         public function tamanhos(): object {

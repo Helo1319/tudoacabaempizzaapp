@@ -73,8 +73,8 @@
         <div class="col-md-3">
             <label class="form-label" for="preco">Preço</label>
             <input class="form-control" type="number" name="preco" id="preco" step="0.01" min="0" value="{{
-                ($produtoTamanho)?
-                $produtoTamanho->preco:
+                ($produtosTamanhos)?
+                $produtosTamanhos->preco:
                 old('preco')
             }}" required>
         </div>
@@ -84,12 +84,12 @@
                 Observações
             </label>
             <textarea class="form-control" name="observacoes" id="observacoes">
-                {{($produtoTamanho)?$produtoTamanho->observacoes:old('observacoes')}}
+                {{($produtosTamanhos)?$produtosTamanhos->observacoes:old('observacoes')}}
             </textarea>
         </div>
     </div>
 
-    @if ($produtoTamanho)
+    @if ($produtosTamanhos)
         <input class="btn btn-outline-success mt-3" type="submit" value="Atualizar tamanho do produto">
     @else
         <input class="btn btn-outline-success mt-3" type="submit" value="Atualizar tamanho do produto">

@@ -1,14 +1,19 @@
 @extends('layouts.base')
 @section('content')
+<style>
+  #table {
+    margin-top: 60px;
+  }
+</style>
 <nav class="navbar bg-danger fixed-top" data-bs-theme="success">
   <div class="container-fluid">
-    <a class="navbar-brand">Editar Produto: {{ $produtos->nome }}</a>
+    <a class="navbar-brand">Editar Cargo: {{ $cargo->cargo }}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-        <h2 class="offcanvas-title" id="offcanvasNavbarLabel">Editar Produtos</h2>
+        <h2 class="offcanvas-title" id="offcanvasNavbarLabel">Editar Cargos</h2>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -27,19 +32,17 @@
     </div>
   </div>
 </nav>
-<form class="mt-5" action="{{route ('produto.update', ['id'=>$produtos->id_produto] )}}" method="post"
+<form id="table" action="{{ route('cargo.update', ['id'=>$cargo->id_cargo]) }}"
+    method="post"
     enctype="multipart/form-data">
     @csrf
-    <label class="mt-3 form-label" for="produto">Nome</label>
-    <input class="form-control" type="text" name="nome" id="nome" value="{{ $produtos->nome }}">
-    <label class="mt-3 form-label" for="imagem">Imagem</label>
-    <input class="form-control" type="file" name="imagem" id="imagem" value="">
-    <label class="mt-3 form-label" for="descricao">Descrição</label>
-    <input class="form-control" type="text" name="descricao" id="descricao" value="{{ $produtos->descricao }}">
-    <label class="mt-3 form-label" for="observacoes">Observações</label>
-    <input class="form-control" type="text" name="observacoes" id="observacoes" value="{{ $produtos->observacoes }}">
-
-    <input class="btn btn-outline-success mt-2" type="submit" value="Atualizar">
+    <label class="form-label" for="cargo">Cargo</label>
+    <input class="form-control" type="text" name="cargo" id="cargo"
+    value="{{
+        $cargo && $cargo->cargo != '' ?
+        $cargo->cargo : old(cargo)
+       }}" ><br>
+       <input class="btn btn-outline-success" type="submit" value="Atualizar">
 </form>
 
 @endsection

@@ -112,6 +112,29 @@ Route::prefix('enderecos')
         Route::post('/destroy', 'destroy')
             ->name('endereco.destroy');
     });
+/*
+ * |--------------------------------------------------------------------------
+ * | Formato
+ * |--------------------------------------------------------------------------
+ */
+Route::prefix('formatos')
+    ->controller(EnderecoController::class)
+    ->group(function () {
+        Route::get('/', 'index')
+            ->name('formato.index');
+        Route::get('/novo', 'create')
+            ->name('formato.create');
+        Route::get('/{id}', 'show')
+            ->name('formato.show');
+        Route::get('/editar/{id}', 'edit')
+            ->name('formato.edit');
+        Route::post('/store', 'store')
+            ->name('formato.store');
+        Route::post('/update', 'update')
+            ->name('formato.update');
+        Route::post('/destroy', 'destroy')
+            ->name('formato.destroy');
+    });
 
 /*
  * |--------------------------------------------------------------------------

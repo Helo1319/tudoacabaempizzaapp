@@ -19,8 +19,9 @@ class ProdutoController extends Controller
     public function index()
     {
         $produtos = Produto::orderBy('nome');
+        $tiposProdutos = TipoProduto::class;
         return view('produto.index')
-            ->with(compact('produtos'));
+            ->with(compact('produtos', 'tiposProdutos'));
     }
 
 
@@ -38,18 +39,18 @@ class ProdutoController extends Controller
 
     public function store(Request $request)
     {
-        $produto = Produto::create($request->all());
+        $produtos = Produto::create($request->all());
         return redirect()
             ->route(
                 'produto.show',
-                ['id' => $produto->id_produto]
+                ['id' => $produtos->id_produto]
             )
             ->with('success', 'Cadastrado com sucesso.');
     }
 
     public function show(int $id)
     {
-        $produto = Produto::find($id);
+        $produtos = Produto::find($id);
         $tamanhos = Tamanho::class;
 
         return view('produto.show')
@@ -59,7 +60,7 @@ class ProdutoController extends Controller
     public function edit(int $id)
     {
 
-        $produto = Produto::find($id);
+        $produtos = Produto::find($id);
         $tiposProduto = TipoProduto::find($id);
         return view('produto.form', compact('produto', 'tiposProduto'));
             // ->with(compact(
@@ -70,21 +71,21 @@ class ProdutoController extends Controller
 
     public function update(Request $request, int $id)
     {
-        $produto = Produto::find($id);
-        $produto->update($request->all());
+        $produtos = Produto::find($id);
+        $produtos->update($request->all());
         return redirect()
             ->route(
                 'produto.show',
-                ['id' => $produto->id_produto]
+                ['id' => $produtos->id_produto]
             )
             ->with('success', 'Atualizado com sucesso!');
     }
 
      public function destroy(int $id) {
 
-        $produto = Produto::find($id);
-        if ($produto) {
-            $produto->delete();
+        $produtos = Produto::find($id);
+        if ($produtos) {
+            $produtos->delete();
         return redirect()
                 ->back()
                 ->with('success', 'Removido com sucesso!');
@@ -104,7 +105,7 @@ class ProdutoController extends Controller
     public function createTamanho(int $id_produto)
     {
         $produtoTamanho = null;
-        $produto = Produto::find($id_produto);
+        $produtos = Produto::find($id_produto);
         $tamanhos = Tamanho::class;
 
         return view('produto.formTamanho')
@@ -133,7 +134,7 @@ class ProdutoController extends Controller
     {
         $produtoTamanho = ProdutoTamanho::find($id);
         // $produto  = Produto::find($produtoTamanho->id_produto);
-        $produto  = $produtoTamanho->produto();
+        $produtos  = $produtoTamanho->produto();
         $tamanhos = ProdutoTamanho::class;
 
         return view('produto.formTamanho')
