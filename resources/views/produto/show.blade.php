@@ -24,6 +24,12 @@
           <li class="nav-item">
             <a class="nav-link" href="/cargos">Cargos</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/usuario">Usuário</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/clientes">Cliente</a>
+          </li>
             </ul>
           </li>
         </ul>
@@ -55,10 +61,10 @@
         </tr>
     </thead>
     <tbody>
-        @forelse ($produto->tamanhos()->get() as $item)
+        @forelse ($produtos->tamanhos()->get() as $item)
          <tr>
             <td>
-                {{-- editar --}}
+                {{-- Editar --}}
                 <a class="btn btn-outline-primary" href="{{ route('produto.edit', ['id'=>$produtos->id_produto]) }}">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>

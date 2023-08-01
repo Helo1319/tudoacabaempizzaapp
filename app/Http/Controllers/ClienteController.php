@@ -37,7 +37,7 @@ class ClienteController extends Controller
     {
         $cliente = null;
         return view('cliente.create')
-            ->with(compact('Cliente'));
+            ->with(compact('cliente'));
     }
 
     /**
@@ -68,7 +68,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
         return view('cliente.form')
-            ->with(compact('cargo'));
+            ->with(compact('cliente'));
     }
 
     /**

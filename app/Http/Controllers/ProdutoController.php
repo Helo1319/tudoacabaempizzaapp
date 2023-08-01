@@ -18,7 +18,7 @@ class ProdutoController extends Controller
 {
     public function index()
     {
-        $produtos = Produto::orderBy('nome');
+        $produtos = Produto::orderBy('nome')->paginate(10);
         $tiposProdutos = TipoProduto::class;
         return view('produto.index')
             ->with(compact('produtos', 'tiposProdutos'));
@@ -40,6 +40,15 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         $produtos = Produto::create($request->all());
+
+        if($request->foto){
+            $extension = $request->foto->getClientOriginalExtension();
+            $nomeFoto = date('YmdHis').rand(0,1000).'.'.$extension;
+            $request->foto->storeAs('/public/fotos', $nomeFoto);
+            $produtos->foto = $nomeFoto;
+            $produtos->save();
+
+        }
         return redirect()
             ->route(
                 'produto.show',
@@ -54,7 +63,7 @@ class ProdutoController extends Controller
         $tamanhos = Tamanho::class;
 
         return view('produto.show')
-            ->with(compact('produto', 'tamanhos'));
+            ->with(compact('produtos', 'tamanhos'));
     }
 
     public function edit(int $id)
@@ -63,10 +72,7 @@ class ProdutoController extends Controller
         $produtos = Produto::find($id);
         $tiposProduto = TipoProduto::find($id);
         return view('produto.form', compact('produto', 'tiposProduto'));
-            // ->with(compact(
-            //     'produto',
-            //     'tiposProduto'
-            // ));
+
     }
 
     public function update(Request $request, int $id)
@@ -104,21 +110,21 @@ class ProdutoController extends Controller
 
     public function createTamanho(int $id_produto)
     {
-        $produtoTamanho = null;
+        $prod_tam = null;
         $produtos = Produto::find($id_produto);
         $tamanhos = Tamanho::class;
 
         return view('produto.formTamanho')
             ->with(compact(
-                'produto',
+                'produtos',
                 'tamanhos',
-                'produtoTamanho'
+                'prod_tam'
             ));
     }
 
     public function storeTamanho(Request $request, int $id_produto)
     {
-        $produtoTamanho = ProdutoTamanho::create([
+        $prod_tam = ProdutoTamanho::create([
             'id_produto' => $id_produto,
             'id_tamanho' => $request->id_tamanho,
             'preco'      => $request->preco,
@@ -132,28 +138,28 @@ class ProdutoController extends Controller
 
     public function editTamanho(int $id)
     {
-        $produtoTamanho = ProdutoTamanho::find($id);
+        $prod_tam = ProdutoTamanho::find($id);
         // $produto  = Produto::find($produtoTamanho->id_produto);
-        $produtos  = $produtoTamanho->produto();
+        $produtos  = $prod_tam->produto();
         $tamanhos = ProdutoTamanho::class;
 
         return view('produto.formTamanho')
             ->with(compact(
-                'produto',
+                'produtos',
                 'tamanhos',
-                'produtoTamanho'
+                'prod_tam'
             ));
     }
 
     public function updateTamanho(Request $request, int $id)
     {
-        $produtoTamanho = ProdutoTamanho::find($id);
-        $produtoTamanho->update($request->all());
+        $prod_tam = ProdutoTamanho::find($id);
+        $prod_tam->update($request->all());
 
         return redirect()
             ->route(
                 'produto.show',
-                ['id' => $produtoTamanho->id_produto]
+                ['id' => $prod_tam->id_produto]
             )
             ->with('success', 'Atualizado com sucesso');
     }

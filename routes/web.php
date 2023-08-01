@@ -50,19 +50,19 @@ Route::prefix('cargos')
     ->controller(CargoController::class)
     ->group(function () {
         Route::get('/', 'index')
-            ->name('cargo.index');
+            ->name('cargos.index');
         Route::get('/novo', 'create')
-            ->name('cargo.create');
+            ->name('cargos.create');
         Route::get('/{id}', 'show')
-            ->name('cargo.show');
+            ->name('cargos.show');
         Route::get('/editar/{id}', 'edit')
-            ->name('cargo.edit');
+            ->name('cargos.edit');
         Route::post('/store', 'store')
-            ->name('cargo.store');
+            ->name('cargos.store');
         Route::post('/update', 'update')
-            ->name('cargo.update');
+            ->name('cargos.update');
         Route::get('/destroy/{id}', 'destroy')
-            ->name('cargo.destroy');
+            ->name('cargos.destroy');
     });
 
 /*

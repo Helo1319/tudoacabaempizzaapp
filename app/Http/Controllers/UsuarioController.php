@@ -13,9 +13,9 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $user = User::orderBy('nome');
+        $users = User::orderBy('nome');
         return view('usuario.index')
-            ->with(compact('user'));
+            ->with(compact('users'));
     }
 
     /**
@@ -23,9 +23,9 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        $user = null;
+        $users = null;
         return view('usuario.create')
-            ->with(compact('user'));
+            ->with(compact('users'));
     }
 
     /**
@@ -33,11 +33,11 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create($request->all());
+        $users = User::create($request->all());
         return redirect()
             ->route(
-                'usuario.show',
-                ['id' => $user->id_user]
+                'usuario.store',
+                ['id' => $users->id_user]
             )
             ->with('success', 'Cadastrado com sucesso.');
     }
@@ -47,9 +47,9 @@ class UsuarioController extends Controller
      */
     public function show(int $id)
     {
-        $user = User::find($id);
+        $users = User::find($id);
         return view('usuario.show')
-            ->with(compact('user'));
+            ->with(compact('users'));
     }
 
     /**
@@ -58,7 +58,7 @@ class UsuarioController extends Controller
     public function edit(Request $request, int $id)
     {
         return view('usuario.edit', [
-            'user' => $request->user(),
+            'users' => $request->users(),
         ]);
     }
 
@@ -67,13 +67,13 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $request->user()->fill($request->validated());
+        $request->users()->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($request->users()->isDirty('email')) {
+            $request->users()->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $request->users()->save();
 
         return Redirect::route('usuario.edit')->with('status', 'profile-updated');
     }

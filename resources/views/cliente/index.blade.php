@@ -47,6 +47,10 @@
                 <th class="col-2">Ações</th>
                 <th class="col-1">ID</th>
                 <th>Nome</th>
+                <th>Celular</th>
+                <th>E-mail</th>
+                <th>Observação</th>
+
             </tr>
         </thead>
         <tbody>
@@ -69,6 +73,16 @@
                 <td>
                     {{ $cliente->nome }}
                 </td>
+                <td>
+                    {{ $cliente->celular }}
+                </td>
+                <td>
+                    {{ $cliente->email}}
+                </td>
+                <td>
+                    {{ $cliente->observacoes }}
+                </td>
+
             </tr>
             @endforeach
         </tbody>

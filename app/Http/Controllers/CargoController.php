@@ -49,7 +49,7 @@ class CargoController extends Controller
     {
         $cargo = Cargo::create($request->all());
         return redirect()
-            ->route('cargo.index')
+            ->route('cargos.index')
             ->with('success', 'Cadastrado com Sucesso!');
     }
 
@@ -81,7 +81,7 @@ class CargoController extends Controller
         $cargo = Cargo::find($id);
         $cargo->update($request->all());
         return redirect()
-            ->route('cargo.index')
+            ->route('cargos.index')
             ->with('success','Atualizado com sucesso!');
     }
 

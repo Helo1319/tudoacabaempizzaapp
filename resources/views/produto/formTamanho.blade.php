@@ -7,7 +7,7 @@
 </style>
 <nav class="navbar bg-danger fixed-top" data-bs-theme="success">
   <div class="container-fluid">
-    <a class="navbar-brand">Editar tamanho: {{ $produto->nome }}</a>
+    <a class="navbar-brand">Editar tamanho: {{ $produtos->nome }}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,6 +24,12 @@
           <li class="nav-item">
             <a class="nav-link" href="/cargos">Cargos</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/usuarios">Usuario</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/clientes">Cliente</a>
+          </li>
             </ul>
           </li>
         </ul>
@@ -32,11 +38,11 @@
     </div>
   </div>
 </nav>
-<form id="table" action="
+<form id="table" action=""
 {{
-        ($produtoTamanho)?
+        ($prod_tam)?
         route('produto.updateTamanho'):
-        route('produto.storeTamanho',['id_produto'=>$produto->id_produto])
+        route('produto.storeTamanho',['id_produto'=>$produtos->id_produto])
 }}"
 
     method="post"
@@ -55,7 +61,7 @@
                 @foreach ($tamanhos::orderBy('tamanho')->get() as $item)
                     <option value="{{$item->id_tamanho}}"
                         @selected(
-                            ($produtoTamanho && $produtoTamanho->id_tamanho == $item->id_tamanho)?
+                            ($prod_tam && $prod_tam->id_tamanho == $item->id_tamanho)?
                             true
                             :
                             false
@@ -73,8 +79,8 @@
         <div class="col-md-3">
             <label class="form-label" for="preco">Preço</label>
             <input class="form-control" type="number" name="preco" id="preco" step="0.01" min="0" value="{{
-                ($produtosTamanhos)?
-                $produtosTamanhos->preco:
+                ($prod_tam)?
+                $prod_tam->preco:
                 old('preco')
             }}" required>
         </div>
@@ -84,12 +90,12 @@
                 Observações
             </label>
             <textarea class="form-control" name="observacoes" id="observacoes">
-                {{($produtosTamanhos)?$produtosTamanhos->observacoes:old('observacoes')}}
+                {{($prod_tam)?$prod_tam->observacoes:old('observacoes')}}
             </textarea>
         </div>
     </div>
 
-    @if ($produtosTamanhos)
+    @if ($prod_tam)
         <input class="btn btn-outline-success mt-3" type="submit" value="Atualizar tamanho do produto">
     @else
         <input class="btn btn-outline-success mt-3" type="submit" value="Atualizar tamanho do produto">

@@ -19,6 +19,12 @@
           <li class="nav-item">
             <a class="nav-link" href="/cargos">Cargos</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/usuarios">Usuario</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/clientes">Cliente</a>
+          </li>
             </ul>
           </li>
         </ul>

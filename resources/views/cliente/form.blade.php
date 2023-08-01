@@ -7,13 +7,13 @@
 </style>
 <nav class="navbar bg-danger fixed-top" data-bs-theme="success">
   <div class="container-fluid">
-    <a class="navbar-brand">Editar Cargo: {{ $cargo->cargo }}</a>
+    <a class="navbar-brand">Editar Cliente: {{ $clientes->cliente }}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-        <h2 class="offcanvas-title" id="offcanvasNavbarLabel">Editar Cargos</h2>
+        <h2 class="offcanvas-title" id="offcanvasNavbarLabel">Editar Cliente</h2>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -24,6 +24,12 @@
           <li class="nav-item">
             <a class="nav-link" href="/cargos">Cargos</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/usuario">Usuário</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/clientes">Cliente</a>
+          </li>
             </ul>
           </li>
         </ul>
@@ -32,17 +38,14 @@
     </div>
   </div>
 </nav>
-<form id="table" action="{{ route('cargo.update', ['id'=>$cargo->id_cargo]) }}"
+<form id="table" action="{{ route('cliente.update', ['id'=>$clientes->id_cliente]) }}"
     method="post"
     enctype="multipart/form-data">
     @csrf
-    <label class="form-label" for="cargo">Cargo</label>
-    <input class="form-control" type="text" name="cargo" id="cargo"
-    value="{{
-        $cargo && $cargo->cargo != '' ?
-        $cargo->cargo : old(cargo)
-       }}" ><br>
-       <input class="btn btn-outline-success" type="submit" value="Atualizar">
+    <label class="form-label" for="Cliente">Cliente</label>
+    <input class="form-control" type="text" name="nome" id="nome">
+    <br>
+    <input class="btn btn-outline-success" type="submit" value="Atualizar">
 </form>
 
 @endsection
