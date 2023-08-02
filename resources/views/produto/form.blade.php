@@ -45,7 +45,7 @@
     <label class="mt-3 form-label" for="observacoes">Observações</label>
     <input class="form-control" type="text" name="observacoes" id="observacoes" value="{{ $produtos->observacoes }}">
 
-    <input class="btn btn-outline-success mt-2" type="submit" value="Atualizar">
+    <input class="btn btn-outline-success mt-2" type="submit" value="Criar" >
 </form>
 
 @endsection

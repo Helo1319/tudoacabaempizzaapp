@@ -1,12 +1,12 @@
 <nav class="navbar bg-danger fixed-top" data-bs-theme="success">
   <div class="container-fluid">
-    <a class="navbar-brand">Editar Cargo: {{ $cargo->cargo }}</a>
+    <a class="navbar-brand"> Cargo: </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-        <h2 class="offcanvas-title" id="offcanvasNavbarLabel">Editar Cargos</h2>
+        <h2 class="offcanvas-title" id="offcanvasNavbarLabel"></h2>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">

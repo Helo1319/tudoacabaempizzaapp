@@ -43,7 +43,7 @@
   </div>
 </nav>
 
-    <a id="table" class="btn btn-success" href="{{ route( 'produto.create' ) }}">
+    <a id="table" class="btn btn-outline-success" href="{{ route( 'produto.create' ) }}">
       Cadastrar Produto
     </a>
 
@@ -53,9 +53,12 @@
                 <th class="col-1">Ações</th>
                 {{-- <th class="col-1"></th> --}}
                 <th class="col-1">ID</th>
+                <th class="col-2"> Imagem</th>
                 <th class="col-1">Produto</th>
                 <th class="col-1">Observações</th>
-                <th class="col-1">Qtd Tamanhos</th>
+                <th class="col-1">Descricao</th>
+                <th class="col-2">Tipo produto</th>
+
             </tr>
         </thead>
 
@@ -73,23 +76,23 @@
                         <i class="fa-solid fa-trash-can"></i>
                     </a>
                 </td>
-
                 <td>
+                    {{ $produto->id_produto}}
+                </td>
+
+                 <td>
                     <img src="#" alt="">
                 </td>
                 <td>
                     {{ $produto->nome }}
                 </td>
-                <td>
-                    {{ $produto->id_produto}}
-                </td>
+
 
                 <td>{{ ($produto->observacoes) }}</td>
+                <td>{{ ($produto->descricao) }}</td>
                 <td>
 
-                    {!!
-                        $produto->tamanhos()->count()
-                    !!}
+                    {{$produto->tipo->tipo}}
 
                 </td>
             </tr>

@@ -34,12 +34,7 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $users = User::create($request->all());
-        return redirect()
-            ->route(
-                'usuario.store',
-                ['id' => $users->id_user]
-            )
-            ->with('success', 'Cadastrado com sucesso.');
+        return to_route('usuario.index')->with('success', 'Cadastrado com sucesso.');
     }
 
     /**
@@ -58,7 +53,7 @@ class UsuarioController extends Controller
     public function edit(Request $request, int $id)
     {
         return view('usuario.edit', [
-            'users' => $request->users(),
+            'user' => $request->user(),
         ]);
     }
 

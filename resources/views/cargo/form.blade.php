@@ -10,10 +10,11 @@
     method="post"
     enctype="multipart/form-data">
     @csrf
-    <label class="form-label" for="cargo">Cargo</label>
+    <label class="form-label" for="cargo"> Editar Cargo</label>
     <input class="form-control" type="text" name="cargo" id="cargo"
     value="{{
-        $cargo && $cargo->cargo != '' ?
+        $cargo && $cargo->cargo
+        != '' ?
         $cargo->cargo : old(cargo)
        }}" ><br>
        <input class="btn btn-outline-success" type="submit" value="Atualizar">

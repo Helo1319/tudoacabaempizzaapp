@@ -5,40 +5,8 @@
     margin-top: 62px;
   }
 </style>
-<nav class="navbar bg-danger fixed-top mb-2" data-bs-theme="success">
-  <div class="container-fluid">
-    <a class="navbar-brand">Usuários</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h2 class="offcanvas-title" id="offcanvasNavbarLabel">Usuários</h2>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link" href="/produtos">Produtos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cargos">Cargos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/usuario">Usuarios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/clientes">Cliente</a>
-          </li>
-            </ul>
-          </li>
-        </ul>
-        </form>
-      </div>
-    </div>
-  </div>
-</nav>
-<a id="table" class="btn btn-success" href="{{ route( 'usuario.create' ) }}">
+
+<a id="table" class="btn btn-outline-success" href="{{ route( 'usuario.create' ) }}">
       Criar Usuário
     </a>
     <table class="table table-striped table-hover">
@@ -48,40 +16,40 @@
                 <th class="col-2">ID</th>
                 <th class="col-2">Nome</th>
                 <th class="col-2">Email</th>
-                <th class="col-2">Cargo</th>
+                <th class="col-2">Senha</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($user as $users)
+            @foreach($users->get() as $user)
             <tr>
                 <td>
-                    <a class="btn btn-outline-primary" href="{{ route('usuario.edit', ['id'=>$users->id_user]) }}">
+                    <a class="btn btn-outline-primary" href="{{ route('usuario.edit', ['id'=>$user->id_user]) }}">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </a>
-                    <a class="btn btn-outline-success" href="{{ route('usuario.show', ['id'=>$users->id_user]) }}">
+                    <a class="btn btn-outline-success" href="{{ route('usuario.show', ['id'=>$user->id_user]) }}">
                         <i class="fa-solid fa-eye"></i>
                     </a>
-                    <a class="btn btn-outline-danger" href="{{ route('usuario.destroy', ['id'=>$users->id_user]) }}">
+                    <a class="btn btn-outline-danger" href="{{ route('usuario.destroy', ['id'=>$user->id_user]) }}">
                         <i class="fa-solid fa-trash-can"></i>
                     </a>
                 </td>
                 <td>
-                    {{ $users->id_user}}
+                    {{ $user->id_user}}
                 </td>
                 <td>
-                    {{ $users->nome }}
+                    {{ $user->nome }}
                 </td>
                 <td>
-                    {{ $users->email }}
+                    {{ $user->email }}
                 </td>
                 <td>
-                    {{ $users->$id_cargo }}
+                    {{ $user->password }}
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-
+    @include('usuario.menuUsuario')
 @endsection
 @section('scripts')
 

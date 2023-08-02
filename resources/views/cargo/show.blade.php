@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        @forelse ($cargso->usuarios()->get() as $usuarios)
+        @forelse ($cargo->user()-> $users)
          <tr>
             <td>
                 <a class="btn btn-outline-primary" href="#">

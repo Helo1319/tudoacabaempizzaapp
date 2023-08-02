@@ -60,10 +60,8 @@ class ProdutoController extends Controller
     public function show(int $id)
     {
         $produtos = Produto::find($id);
-        $tamanhos = Tamanho::class;
-
         return view('produto.show')
-            ->with(compact('produtos', 'tamanhos'));
+            ->with(compact('produtos'));
     }
 
     public function edit(int $id)
@@ -71,7 +69,7 @@ class ProdutoController extends Controller
 
         $produtos = Produto::find($id);
         $tiposProduto = TipoProduto::find($id);
-        return view('produto.form', compact('produto', 'tiposProduto'));
+        return view('produto.form', compact('produtos', 'tiposProduto'));
 
     }
 

@@ -37,9 +37,8 @@ class CargoController extends Controller
      */
     public function create()
     {
-        $cargo = null;
-        return view('cargo.create')
-            ->with(compact('cargo'));
+        $cargo = Cargo::class;
+        return view('cargo.create', compact('cargo'));
     }
 
     /**
