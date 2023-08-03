@@ -7,7 +7,7 @@
 </style>
 
 
-    <a id="table" class="btn btn-outline-success" href="{{ route( 'cargos.create' ) }}">
+    <a id="table" class="btn btn-outline-success" href="{{ route( 'tamanho.create' ) }}">
       Criar Tamanho
     </a>
     <table class="table table-striped table-hover">
@@ -22,13 +22,13 @@
             @foreach($tamanhos as $tamanho)
             <tr>
                 <td>
-                    <a class="btn btn-outline-primary" href="{{ route('tamanhos.edit', ['id'=>$tamanho->id_tamanho]) }}">
+                    <a class="btn btn-outline-primary" href="{{ route('tamanho.edit', ['id'=>$tamanho->id_tamanho]) }}">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </a>
-                    {{-- <a class="btn btn-outline-success" href="{{ route('cargos.show', ['id'=>$cargo->id_cargo]) }}">
+                    {{-- <a class="btn btn-outline-success" href="{{ route('tamanho.show', ['id'=>$cargo->id_cargo]) }}">
                         <i class="fa-solid fa-eye"></i>
                     </a> --}}
-                    <a class="btn btn-outline-danger" href="{{ route('cargos.destroy', ['id'=>$tamanho->id_tamanho]) }}">
+                    <a class="btn btn-outline-danger" href="{{ route('tamanho.destroy', ['id'=>$tamanho->id_tamanho]) }}">
                         <i class="fa-solid fa-trash-can"></i>
                     </a>
                 </td>

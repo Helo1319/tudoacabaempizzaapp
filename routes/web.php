@@ -7,7 +7,7 @@ use App\Http\Controllers\{
     EnderecoController,
     PedidoController,
     ProdutoController,
-    ProdutoTamanhoController,
+   TamanhoController,
     ProfileController,
     UsuarioController,
 };
@@ -188,7 +188,7 @@ Route::prefix('produtos')
  * |--------------------------------------------------------------------------
  */
 Route::prefix('tamanhos')
-    ->controller(ProdutoTamanhoController::class)
+    ->controller(TamanhoController::class)
     ->group(function () {
         Route::get('/', 'index')
             ->name('tamanho.index');

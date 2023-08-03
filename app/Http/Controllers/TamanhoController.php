@@ -13,7 +13,7 @@ class TamanhoController extends Controller
     public function index()
     {
 
-        $tamanho = Tamanho::orderBy('tamanho')
+        $tamanhos = Tamanho::orderBy('tamanho')
                         ->get();
         return view('tamanho.index')
             ->with(compact('tamanhos'));
