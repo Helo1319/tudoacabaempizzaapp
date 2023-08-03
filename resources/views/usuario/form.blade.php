@@ -6,7 +6,11 @@
   }
 </style>
 
-<form id="table" action="{{ route('usuario.update', ['id'=>$usuarios->id_usuario]) }}"
+<form id="table" action="{{
+    $usuario ?
+    route('usuario.update', ['id'=>$usuario->id_usuario])
+    :
+    route('usuario.store') }}"
     method="post"
     enctype="multipart/form-data">
     @csrf

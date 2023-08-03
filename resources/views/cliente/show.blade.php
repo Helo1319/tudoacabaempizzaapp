@@ -15,23 +15,20 @@
         </tr>
     </thead>
     <tbody>
-        @forelse ($cliente->user()->get() as $users)
+
          <tr>
             <td>
                 <a class="btn btn-outline-primary" href="#">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
                 <a class="btn btn-outline-success" href="#">
-                    <i class="fa-solid fa-eye"></i>
+                    <i class="fa-solid fa-trash"></i>
                 </a>
             </td>
             <td>
-                {{ $usuarios->nome}}
+                {{$cliente->id_cliente}}
             </td>
         </tr>
-        @empty
-
-        @endforelse
     </tbody>
 </table>
     @include('cliente.menuCliente')

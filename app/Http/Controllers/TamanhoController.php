@@ -1,24 +1,11 @@
 <?php
 
-/**
- * |----------------------------------------
- * | @author Alessandra Carvalho;
- *           Ana Laura Clementino;
- *           Heloísa Ribeiro;
- *           Luiza Neia.
- * |----------------------------------------
- */
-
 namespace App\Http\Controllers;
 
+use App\Models\Tamanho;
 use Illuminate\Http\Request;
-use App\Models\{
-    Cliente,
-    User
-};
-use Ramsey\Uuid\Type\Integer;
 
-class ClienteController extends Controller
+class TamanhoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,8 +13,10 @@ class ClienteController extends Controller
     public function index()
     {
 
-        $clientes = Cliente::orderBy('nome');
-        return view('cliente.index', compact('clientes'));
+        $tamanho = Tamanho::orderBy('tamanho')
+                        ->get();
+        return view('tamanho.index')
+            ->with(compact('tamanhos'));
     }
 
     /**
@@ -35,9 +24,8 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        $cliente = null;
-        return view('cliente.create')
-            ->with(compact('cliente'));
+        $tamanho = Tamanho::class;
+        return view('tamanho.create', compact('tamanho'));
     }
 
     /**
@@ -45,9 +33,9 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        $cliente = Cliente::create($request->all());
+        $tamanho = Tamanho::create($request->all());
         return redirect()
-            ->route('cliente.index')
+            ->route('tamanhos.index')
             ->with('success', 'Cadastrado com Sucesso!');
     }
 
@@ -56,9 +44,9 @@ class ClienteController extends Controller
      */
     public function show(int $id)
     {
-        $cliente = Cliente::where('id_user','=',$id);
-        return view('cliente.show')
-            ->with(compact('cliente'));
+        $tamanho = Tamanho::find($id);
+        return view('tamanho.show')
+            ->with(compact('tamanho'));
     }
 
     /**
@@ -66,9 +54,9 @@ class ClienteController extends Controller
      */
     public function edit(int $id)
     {
-        $cliente = Cliente::find($id);
-        return view('cliente.form')
-            ->with(compact('cliente'));
+        $tamanho = Tamanho::find($id);
+        return view('tamanho.form')
+            ->with(compact('tamanho'));
     }
 
     /**
@@ -76,10 +64,10 @@ class ClienteController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $cliente = Cliente::find($id);
-        $cliente->update($request->all());
+        $tamanho = Tamanho::find($id);
+        $tamanho->update($request->all());
         return redirect()
-            ->route('cliente.index')
+            ->route('tamanhos.index')
             ->with('success','Atualizado com sucesso!');
     }
 
@@ -88,7 +76,7 @@ class ClienteController extends Controller
      */
     public function destroy(int $id)
     {
-        Cliente::where('id_cliente','=',$id)->delete();
+        Tamanho::find($id)->delete();
         return redirect()
             ->back()
             ->with('destroy','Excluído com sucesso!');

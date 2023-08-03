@@ -18,11 +18,14 @@
               <a class="nav-link" href="/cargos">Cargos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/cargos">Usuario</a>
+              <a class="nav-link" href="/usuario">Usuario</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/cargos">Cliente</a>
+              <a class="nav-link" href="/cliente">Cliente</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tamanhos">Tamanho</a>
+              </li>
               </ul>
             </li>
           </ul>

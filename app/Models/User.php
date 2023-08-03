@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
-
+    protected $primaryKey = 'id_user';
     /**
      * The attributes that are mass assignable.
      *

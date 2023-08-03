@@ -15,23 +15,22 @@
         </tr>
     </thead>
     <tbody>
-        @forelse ($usuario->user()->get() as $users)
+
          <tr>
             <td>
                 <a class="btn btn-outline-primary" href="#">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
-                <a class="btn btn-outline-success" href="#">
-                    <i class="fa-solid fa-eye"></i>
+
+                <a class="btn btn-outline-danger" href="#">
+                    <i class="fa-solid fa-trash"></i>
                 </a>
             </td>
             <td>
-                {{ $usuarios->nome}}
+                {{ $user->nome}}
             </td>
         </tr>
-        @empty
 
-        @endforelse
     </tbody>
 </table>
     @include('usuario.menuUsuario')

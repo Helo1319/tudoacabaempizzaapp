@@ -59,7 +59,7 @@ Route::prefix('cargos')
             ->name('cargos.edit');
         Route::post('/store', 'store')
             ->name('cargos.store');
-        Route::post('/update', 'update')
+        Route::post('/update/{id}', 'update')
             ->name('cargos.update');
         Route::get('/destroy/{id}', 'destroy')
             ->name('cargos.destroy');
@@ -83,9 +83,9 @@ Route::prefix('clientes')
             ->name('cliente.edit');
         Route::post('/store', 'store')
             ->name('cliente.store');
-        Route::post('/update', 'update')
+        Route::post('/update/{id}', 'update')
             ->name('cliente.update');
-        Route::post('/destroy', 'destroy')
+        Route::get('/destroy/{id}', 'destroy')
             ->name('cliente.destroy');
     });
 
@@ -224,7 +224,7 @@ Route::prefix('usuario')
             ->name('usuario.edit');
         Route::post('/store', 'store')
             ->name('usuario.store');
-        Route::post('/update', 'update')
+        Route::post('/update/{id}', 'update')
             ->name('usuario.update');
         Route::get('/destroy/{id}', 'destroy')
             ->name('usuario.destroy');
