@@ -5,7 +5,7 @@
     margin-top: 60px;
   }
 </style>
-@include('tamanho.menuTamanho')
+@include('tamanho.menuTamanhos')
 <form id="table" action="{{ route('tamanho.store')}}"
     method="post"
     enctype="multipart/form-data">

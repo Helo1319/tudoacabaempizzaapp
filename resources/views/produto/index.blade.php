@@ -15,13 +15,13 @@
     <table class="table table-striped table-hover col-12">
         <thead>
             <tr>
-                <th class="col-1">Ações</th>
+                <th class="col-2">Ações</th>
                 {{-- <th class="col-1"></th> --}}
                 <th class="col-1">ID</th>
                 <th class="col-2"> Imagem</th>
                 <th class="col-1">Produto</th>
-                <th class="col-1">Observações</th>
-                <th class="col-1">Descricao</th>
+                <th class="col-2">Observações</th>
+                <th class="col-2">Descricao</th>
                 <th class="col-2">Tipo produto</th>
 
             </tr>
@@ -46,7 +46,10 @@
                 </td>
 
                  <td>
-                    <img src="#" alt="">
+                    @if ($produto->foto)
+                    <img src="{{ url('storage/fotos/' . $produto->foto) }}" lass="img-thumbnail" width="250">
+
+                    @endif
                 </td>
                 <td>
                     {{ $produto->nome }}

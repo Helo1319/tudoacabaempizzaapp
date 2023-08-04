@@ -26,6 +26,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/tamanhos">Tamanho</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/formatos">Formato</a>
+              </li>
               </ul>
             </li>
           </ul>

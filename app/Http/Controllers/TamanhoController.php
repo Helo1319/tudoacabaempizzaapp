@@ -35,7 +35,7 @@ class TamanhoController extends Controller
     {
         $tamanho = Tamanho::create($request->all());
         return redirect()
-            ->route('tamanhos.index')
+            ->route('tamanho.index')
             ->with('success', 'Cadastrado com Sucesso!');
     }
 
@@ -46,7 +46,7 @@ class TamanhoController extends Controller
     {
         $tamanho = Tamanho::find($id);
         return view('tamanho.show')
-            ->with(compact('tamanho'));
+            ->with(compact('tamanhos'));
     }
 
     /**
@@ -67,7 +67,7 @@ class TamanhoController extends Controller
         $tamanho = Tamanho::find($id);
         $tamanho->update($request->all());
         return redirect()
-            ->route('tamanhos.index')
+            ->route('tamanho.index')
             ->with('success','Atualizado com sucesso!');
     }
 

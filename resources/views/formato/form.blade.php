@@ -5,22 +5,22 @@
     margin-top: 60px;
   }
 </style>
-@include('tamanho.menuTamanhos')
+@include('formato.menuFormato')
 <form id="table" action="{{
-    $tamanho ?
-        route('tamanho.update', ['id'=>$tamanho->id_tamanho])
+    $formato ?
+        route('formato.update', ['id'=>$formato->id_formato])
         :
-        route('tamanho.store')
+        route('formato.store')
  }}"
     method="post"
     enctype="multipart/form-data">
     @csrf
-    <label class="form-label" for="tamanho"> Editar tamanho</label>
-    <input class="form-control" type="text" name="tamanho" id="tamanho"
+    <label class="form-label" for="formato"> Editar Formato</label>
+    <input class="form-control" type="text" name="formato" id="formato"
     value="{{
-        $tamanho && $tamanho->tamanho
+        $formato && $formato->formato
         != '' ?
-        $tamanho->tamanho : old(tamanho)
+        $formato->formato : old('formato')
        }}" ><br>
        <input class="btn btn-outline-success" type="submit" value="Atualizar">
 </form>

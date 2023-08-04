@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Tamanho extends Model
+class Formato extends Model
 {
     use SoftDeletes;
 

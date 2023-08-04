@@ -12,21 +12,24 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link" href="/produtos">Produtos</a>
+            <a class="nav-link" href="{{ route('produto.index') }}">Produtos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/cargos">Cargos</a>
+            <a class="nav-link" href="{{ route('cargos.index') }}">Cargos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/usuario">Usuários</a>
+            <a class="nav-link" href="{{ route('usuario.index') }}">Usuários</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/clientes">Cliente</a>
+            <a class="nav-link" href="{{ route('cliente.index') }}">Cliente</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/tamanhos">Tamanho</a>
+            <a class="nav-link" href="{{ route('tamanho.index') }}">Tamanho</a>
           </li>
-            </ul>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('formato.index') }}">Formato</a>
           </li>
         </ul>
         </form>

@@ -5,9 +5,10 @@ use App\Http\Controllers\{
     CargoController,
     ClienteController,
     EnderecoController,
+    FormatoController,
     PedidoController,
     ProdutoController,
-   TamanhoController,
+    TamanhoController,
     ProfileController,
     UsuarioController,
 };
@@ -118,7 +119,7 @@ Route::prefix('enderecos')
  * |--------------------------------------------------------------------------
  */
 Route::prefix('formatos')
-    ->controller(EnderecoController::class)
+    ->controller(FormatoController::class)
     ->group(function () {
         Route::get('/', 'index')
             ->name('formato.index');
@@ -194,7 +195,7 @@ Route::prefix('tamanhos')
             ->name('tamanho.index');
         Route::get('/novo', 'create')
             ->name('tamanho.create');
-        Route::get('/{id}', 'show')
+        Route::get('/tamanho/{id}', 'show')
             ->name('tamanho.show');
         Route::get('/editar/{id}', 'edit')
             ->name('tamanho.edit');
@@ -202,7 +203,7 @@ Route::prefix('tamanhos')
             ->name('tamanho.store');
         Route::post('/update', 'update')
             ->name('tamanho.update');
-        Route::post('/destroy', 'destroy')
+        Route::get('/destroy/{id}', 'destroy')
             ->name('tamanho.destroy');
     });
 

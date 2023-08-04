@@ -24,8 +24,8 @@
     @endforeach
 
     </select>
-    <label class="mt-3 form-label" for="imagem">Imagem</label>
-    <input class="form-control" type="file" name="imagem" id="imagem" value="">
+    <label class="mt-3 form-label" for="foto">Imagem</label>
+    <input class="form-control" type="file" name="foto" id="foto" value="">
 
     <label class="mt-3 form-label" for="descricao">Descrição</label>
     <input class="form-control" type="text" name="descricao" id="descricao" value="">

@@ -13,9 +13,11 @@
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th class="col-2">Ações</th>
-                <th class="col-1">ID</th>
-                <th>Tamanho</th>
+                <th class="col-22">Ações</th>
+                <th class="col-2">ID</th>
+                <th class="col-4">Tamanho</th>
+                <th class="col-4">Preço</th>
+
             </tr>
         </thead>
         <tbody>
@@ -38,11 +40,15 @@
                 <td>
                     {{ $tamanho->tamanho }}
                 </td>
+                <td>
+                    {{ $tamanho->preco}}
+                </td>
+
             </tr>
             @endforeach
         </tbody>
     </table>
-    @include('tamanho.menuTamanho')
+    @include('tamanho.menuTamanhos')
 @endsection
 @section('scripts')
 

@@ -21,7 +21,7 @@
         </div>
 
         <footer class="container-fluid my-3">
-            &copy; Todos os direitos reservados - Turma 94
+            &copy; 2023 TUDO ACABA EM PIZZA. Todos os direitos Reservados
         </footer>
 </body>
     @yield('scripts')

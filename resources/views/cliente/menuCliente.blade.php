@@ -21,10 +21,13 @@
               <a class="nav-link" href="/usuario">Usuario</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/cliente">Cliente</a>
+              <a class="nav-link" href="/clientes">Cliente</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/tamanhos">Tamanho</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/formatos">Formato</a>
               </li>
               </ul>
             </li>
