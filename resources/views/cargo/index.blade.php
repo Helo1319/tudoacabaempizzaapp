@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($cargos as $cargo)
+            @foreach($cargos->get() as $cargo)
             <tr>
                 <td>
                     <a class="btn btn-outline-primary" href="{{ route('cargos.edit', ['id'=>$cargo->id_cargo]) }}">

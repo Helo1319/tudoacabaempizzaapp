@@ -16,7 +16,7 @@
                 <th class="col-2">ID</th>
                 <th class="col-2">Nome</th>
                 <th class="col-2">Email</th>
-                <th class="col-2">Senha</th>
+                {{-- <th class="col-2">Senha</th> --}}
             </tr>
         </thead>
         <tbody>
@@ -42,9 +42,9 @@
                 <td>
                     {{ $user->email }}
                 </td>
-                <td>
+                {{-- <td>
                     {{ $user->password }}
-                </td>
+                </td> --}}
             </tr>
             @endforeach
         </tbody>
