@@ -2,9 +2,7 @@
 
 /**
  * |----------------------------------------
- * | @author Alessandra Carvalho;
- *           Ana Laura Clementino;
- *           Heloísa Ribeiro;
+ * | @author Heloísa P. Ribeiro;
  *           Luiza Neia.
  * |----------------------------------------
  */
