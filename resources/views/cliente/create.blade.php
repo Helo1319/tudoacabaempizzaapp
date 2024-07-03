@@ -6,20 +6,22 @@
   }
 </style>
 
-<form id="table" action="{{ route('usuario.store')}}"
+<form id="table" action="{{ route('cliente.store')}}"
     method="post"
     enctype="multipart/form-data">
     @csrf
-    <label class="form-label" for="cliente">Novo Usuário</label>
+    <label class="form-label" for="cliente">Novo Cliente</label>
     <input class="form-control" type="text" name="nome" id="nome"><br>
+    <label class="form-label" for="cliente">Celular</label>
+    <input class="form-control" type="tel" name="celular" id="celular"><br>
     <label class="form-label" for="cliente">E-mail</label>
     <input class="form-control" type="email" name="email" id="email"><br>
-    <label class="form-label" for="cliente">Senha</label>
-    <input class="form-control" type="password" name="password" id="password"><br>
+    <label class="form-label" for="cliente">Observações</label>
+    <input class="form-control" type="text" name="observacoes" id="observacoes"><br>
        <input class="btn btn-outline-success" type="submit" value="Criar">
 
 </form>
-    @include('usuario.menuUsuario')
+    @include('cliente.menuCliente')
 @endsection
 @section('scripts')
 

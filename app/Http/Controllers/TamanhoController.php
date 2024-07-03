@@ -1,22 +1,11 @@
 <?php
 
-/**
- * |----------------------------------------
- * | @author Heloísa P. Ribeiro;
- *           Luiza Neia.
- * |----------------------------------------
- */
-
 namespace App\Http\Controllers;
 
+use App\Models\Tamanho;
 use Illuminate\Http\Request;
-use App\Models\{
-    Cargo,
-    User
-};
-use Ramsey\Uuid\Type\Integer;
 
-class CargoController extends Controller
+class TamanhoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,10 +13,10 @@ class CargoController extends Controller
     public function index()
     {
 
-        $cargos = Cargo::orderBy('cargo');
-                        // ->get();
-        return view('cargo.index')
-            ->with(compact('cargos'));
+        $tamanhos = Tamanho::orderBy('tamanho')
+                        ->get();
+        return view('tamanho.index')
+            ->with(compact('tamanhos'));
     }
 
     /**
@@ -35,8 +24,8 @@ class CargoController extends Controller
      */
     public function create()
     {
-        $cargo = Cargo::class;
-        return view('cargos.create', compact('cargo'));
+        $tamanho = Tamanho::class;
+        return view('tamanho.create', compact('tamanho'));
     }
 
     /**
@@ -44,9 +33,9 @@ class CargoController extends Controller
      */
     public function store(Request $request)
     {
-        $cargo = Cargo::create($request->all());
+        $tamanho = Tamanho::create($request->all());
         return redirect()
-            ->route('cargos.index')
+            ->route('tamanho.index')
             ->with('success', 'Cadastrado com Sucesso!');
     }
 
@@ -55,9 +44,9 @@ class CargoController extends Controller
      */
     public function show(int $id)
     {
-        $cargo = Cargo::find($id);
-        return view('cargos.show')
-            ->with(compact('cargo'));
+        $tamanho = Tamanho::find($id);
+        return view('tamanho.show')
+            ->with(compact('tamanhos'));
     }
 
     /**
@@ -65,9 +54,9 @@ class CargoController extends Controller
      */
     public function edit(int $id)
     {
-        $cargo = Cargo::find($id);
-        return view('cargos.form')
-            ->with(compact('cargo'));
+        $tamanho = Tamanho::find($id);
+        return view('tamanho.form')
+            ->with(compact('tamanho'));
     }
 
     /**
@@ -75,10 +64,10 @@ class CargoController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $cargo = Cargo::find($id);
-        $cargo->update($request->all());
+        $tamanho = Tamanho::find($id);
+        $tamanho->update($request->all());
         return redirect()
-            ->route('cargos.index')
+            ->route('tamanho.index')
             ->with('success','Atualizado com sucesso!');
     }
 
@@ -87,7 +76,7 @@ class CargoController extends Controller
      */
     public function destroy(int $id)
     {
-        Cargo::find($id)->delete();
+        Tamanho::find($id)->delete();
         return redirect()
             ->back()
             ->with('destroy','Excluído com sucesso!');

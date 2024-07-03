@@ -9,8 +9,8 @@ class TipoPedido extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'tipos_pedidos';
-    protected $primaryKey = 'id_tipo_pedido';
+    protected $table = 'tip_ped';
+    protected $primaryKey = 'id_tipos_ped';
     protected $dates = [
                 'created_at',
                 'updated_at',
@@ -18,7 +18,7 @@ class TipoPedido extends Model
     ];
 
     protected $fillable = [
-        'tipo_pedido'
+        'tip_ped'
     ];
 
 }

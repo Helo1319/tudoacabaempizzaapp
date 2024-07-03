@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -13,9 +15,9 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $user = User::orderBy('nome');
+        $users = User::orderBy('nome');
         return view('usuario.index')
-            ->with(compact('user'));
+            ->with(compact('users'));
     }
 
     /**
@@ -23,9 +25,9 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        $user = null;
+        $users = null;
         return view('usuario.create')
-            ->with(compact('user'));
+            ->with(compact('users'));
     }
 
     /**
@@ -33,13 +35,12 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create($request->all());
-        return redirect()
-            ->route(
-                'usuario.show',
-                ['id' => $user->id_user]
-            )
-            ->with('success', 'Cadastrado com sucesso.');
+        $user = User::create([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return to_route('usuario.index')->with('success', 'Cadastrado com sucesso.');
     }
 
     /**
@@ -47,7 +48,7 @@ class UsuarioController extends Controller
      */
     public function show(int $id)
     {
-        $user = User::find($id);
+        $user =  User::find($id);
         return view('usuario.show')
             ->with(compact('user'));
     }
@@ -55,11 +56,12 @@ class UsuarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, int $id)
+    public function edit( int $id)
     {
-        return view('usuario.edit', [
-            'user' => $request->user(),
-        ]);
+
+        $user = User::where('id_user','=',$id)->first();
+
+        return view('usuario.edit')->with(compact('user'));
     }
 
     /**
@@ -67,15 +69,20 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $request->user()->fill($request->validated());
+        $user = User::find($id);
+        // $user->update($request->all());
+        $user->update([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
-
-        return Redirect::route('usuario.edit')->with('status', 'profile-updated');
+        return redirect()
+            ->route(
+                'usuario.show',
+                ['id' => $user->id_user]
+            )
+            ->with('success', 'Atualizado com sucesso!');
     }
 
     /**
@@ -83,7 +90,7 @@ class UsuarioController extends Controller
      */
     public function destroy(int $id)
     {
-        User::find($id)->delete();
+        User::where('id_user','=',$id)->delete();
         return redirect()
             ->back()
             ->with('destroy','Excluído com sucesso!');

@@ -5,9 +5,10 @@ use App\Http\Controllers\{
     CargoController,
     ClienteController,
     EnderecoController,
+    FormatoController,
     PedidoController,
     ProdutoController,
-    ProdutoTamanhoController,
+    TamanhoController,
     ProfileController,
     UsuarioController,
 };
@@ -50,19 +51,19 @@ Route::prefix('cargos')
     ->controller(CargoController::class)
     ->group(function () {
         Route::get('/', 'index')
-            ->name('cargo.index');
+            ->name('cargos.index');
         Route::get('/novo', 'create')
-            ->name('cargo.create');
+            ->name('cargos.create');
         Route::get('/{id}', 'show')
-            ->name('cargo.show');
+            ->name('cargos.show');
         Route::get('/editar/{id}', 'edit')
-            ->name('cargo.edit');
+            ->name('cargos.edit');
         Route::post('/store', 'store')
-            ->name('cargo.store');
-        Route::post('/update', 'update')
-            ->name('cargo.update');
+            ->name('cargos.store');
+        Route::post('/update/{id}', 'update')
+            ->name('cargos.update');
         Route::get('/destroy/{id}', 'destroy')
-            ->name('cargo.destroy');
+            ->name('cargos.destroy');
     });
 
 /*
@@ -83,9 +84,9 @@ Route::prefix('clientes')
             ->name('cliente.edit');
         Route::post('/store', 'store')
             ->name('cliente.store');
-        Route::post('/update', 'update')
+        Route::post('/update/{id}', 'update')
             ->name('cliente.update');
-        Route::post('/destroy', 'destroy')
+        Route::get('/destroy/{id}', 'destroy')
             ->name('cliente.destroy');
     });
 
@@ -111,6 +112,29 @@ Route::prefix('enderecos')
             ->name('endereco.update');
         Route::post('/destroy', 'destroy')
             ->name('endereco.destroy');
+    });
+/*
+ * |--------------------------------------------------------------------------
+ * | Formato
+ * |--------------------------------------------------------------------------
+ */
+Route::prefix('formatos')
+    ->controller(FormatoController::class)
+    ->group(function () {
+        Route::get('/', 'index')
+            ->name('formato.index');
+        Route::get('/novo', 'create')
+            ->name('formato.create');
+        Route::get('/{id}', 'show')
+            ->name('formato.show');
+        Route::get('/editar/{id}', 'edit')
+            ->name('formato.edit');
+        Route::post('/store', 'store')
+            ->name('formato.store');
+        Route::post('/update', 'update')
+            ->name('formato.update');
+        Route::post('/destroy', 'destroy')
+            ->name('formato.destroy');
     });
 
 /*
@@ -165,13 +189,13 @@ Route::prefix('produtos')
  * |--------------------------------------------------------------------------
  */
 Route::prefix('tamanhos')
-    ->controller(ProdutoTamanhoController::class)
+    ->controller(TamanhoController::class)
     ->group(function () {
         Route::get('/', 'index')
             ->name('tamanho.index');
         Route::get('/novo', 'create')
             ->name('tamanho.create');
-        Route::get('/{id}', 'show')
+        Route::get('/tamanho/{id}', 'show')
             ->name('tamanho.show');
         Route::get('/editar/{id}', 'edit')
             ->name('tamanho.edit');
@@ -179,7 +203,7 @@ Route::prefix('tamanhos')
             ->name('tamanho.store');
         Route::post('/update', 'update')
             ->name('tamanho.update');
-        Route::post('/destroy', 'destroy')
+        Route::get('/destroy/{id}', 'destroy')
             ->name('tamanho.destroy');
     });
 
@@ -201,7 +225,7 @@ Route::prefix('usuario')
             ->name('usuario.edit');
         Route::post('/store', 'store')
             ->name('usuario.store');
-        Route::post('/update', 'update')
+        Route::post('/update/{id}', 'update')
             ->name('usuario.update');
         Route::get('/destroy/{id}', 'destroy')
             ->name('usuario.destroy');

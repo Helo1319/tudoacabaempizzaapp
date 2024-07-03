@@ -5,8 +5,8 @@
         margin-top: 62px;
     }
 </style>
-@include('cargo.menuCargos')
-<h2 id="table"></h2>
+
+<h2 id="table"> Relação de Usuários com esse cargo</h2>
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -15,30 +15,23 @@
         </tr>
     </thead>
     <tbody>
-        @forelse ($cargo->user()-> $users)
+
          <tr>
             <td>
                 <a class="btn btn-outline-primary" href="#">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
                 <a class="btn btn-outline-success" href="#">
-                    <i class="fa-solid fa-eye"></i>
+                    <i class="fa-solid fa-trash"></i>
                 </a>
             </td>
             <td>
-                {{ $users->nome}}
+                {{$cliente->id_cliente}}
             </td>
         </tr>
-        @empty
-        <tr>
-            <td colspan="2">
-                Nenhum usuário com esse cargo
-            </td>
-        </tr>
-        @endforelse
     </tbody>
 </table>
-
+    @include('cliente.menuCliente')
 @endsection
 @section('scripts')
 

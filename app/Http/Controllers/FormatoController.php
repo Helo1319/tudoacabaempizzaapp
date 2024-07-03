@@ -1,22 +1,11 @@
 <?php
 
-/**
- * |----------------------------------------
- * | @author Heloísa P. Ribeiro;
- *           Luiza Neia.
- * |----------------------------------------
- */
-
 namespace App\Http\Controllers;
 
+use App\Models\Formato;
 use Illuminate\Http\Request;
-use App\Models\{
-    Cargo,
-    User
-};
-use Ramsey\Uuid\Type\Integer;
 
-class CargoController extends Controller
+class FormatoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,10 +13,9 @@ class CargoController extends Controller
     public function index()
     {
 
-        $cargos = Cargo::orderBy('cargo');
-                        // ->get();
-        return view('cargo.index')
-            ->with(compact('cargos'));
+        $formatos = Formato::orderBy('formato');
+        return view('formato.index')
+            ->with(compact('formatos'));
     }
 
     /**
@@ -35,8 +23,8 @@ class CargoController extends Controller
      */
     public function create()
     {
-        $cargo = Cargo::class;
-        return view('cargos.create', compact('cargo'));
+        $formato = Formato::class;
+        return view('formato.create', compact('formato'));
     }
 
     /**
@@ -44,9 +32,9 @@ class CargoController extends Controller
      */
     public function store(Request $request)
     {
-        $cargo = Cargo::create($request->all());
+        $formato = Formato::create($request->all());
         return redirect()
-            ->route('cargos.index')
+            ->route('formato.index')
             ->with('success', 'Cadastrado com Sucesso!');
     }
 
@@ -55,9 +43,9 @@ class CargoController extends Controller
      */
     public function show(int $id)
     {
-        $cargo = Cargo::find($id);
-        return view('cargos.show')
-            ->with(compact('cargo'));
+        $formato = Formato::find($id);
+        return view('formato.show')
+            ->with(compact('formato'));
     }
 
     /**
@@ -65,9 +53,9 @@ class CargoController extends Controller
      */
     public function edit(int $id)
     {
-        $cargo = Cargo::find($id);
-        return view('cargos.form')
-            ->with(compact('cargo'));
+        $formato = Formato::find($id);
+        return view('formato.form')
+            ->with(compact('formato'));
     }
 
     /**
@@ -75,10 +63,10 @@ class CargoController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $cargo = Cargo::find($id);
-        $cargo->update($request->all());
+        $formato = Formato::find($id);
+        $formato->update($request->all());
         return redirect()
-            ->route('cargos.index')
+            ->route('formatos.index')
             ->with('success','Atualizado com sucesso!');
     }
 
@@ -87,7 +75,7 @@ class CargoController extends Controller
      */
     public function destroy(int $id)
     {
-        Cargo::find($id)->delete();
+        Formato::find($id)->delete();
         return redirect()
             ->back()
             ->with('destroy','Excluído com sucesso!');

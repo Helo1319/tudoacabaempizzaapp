@@ -5,22 +5,22 @@
     margin-top: 60px;
   }
 </style>
-@include('cargo.menuCargos')
+@include('tamanho.menuTamanhos')
 <form id="table" action="{{
-    $cargo ?
-        route('cargos.update', ['id'=>$cargo->id_cargo])
+    $tamanho ?
+        route('tamanho.update', ['id'=>$tamanho->id_tamanho])
         :
-        route('cargos.store')
+        route('tamanho.store')
  }}"
     method="post"
     enctype="multipart/form-data">
     @csrf
-    <label class="form-label" for="cargo"> Editar Cargo</label>
-    <input class="form-control" type="text" name="cargo" id="cargo"
+    <label class="form-label" for="tamanho"> Editar tamanho</label>
+    <input class="form-control" type="text" name="tamanho" id="tamanho"
     value="{{
-        $cargo && $cargo->cargo
+        $tamanho && $tamanho->tamanho
         != '' ?
-        $cargo->cargo : old(cargo)
+        $tamanho->tamanho : old(tamanho)
        }}" ><br>
        <input class="btn btn-outline-success" type="submit" value="Atualizar">
 </form>
